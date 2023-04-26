@@ -18,5 +18,12 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function() {
+    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('posts', App\Http\Controllers\PostController::class);
+    Route::resource('categories', App\Http\Controllers\CategoryController::class);
+    Route::resource('tags', App\Http\Controllers\TagController::class);
+});
+
