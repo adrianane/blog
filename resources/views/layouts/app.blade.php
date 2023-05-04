@@ -15,6 +15,13 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- summernote -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 </head>
 <body>
     <div id="app">
@@ -76,5 +83,13 @@
             @yield('content')
         </main>
     </div>
+    <script>
+        $(document).ready(function() {
+            $("#any_summernote").summernote({
+                height: 250
+            });
+            $('.dropdown-toggle').dropdown();
+        });
+    </script>
 </body>
 </html>

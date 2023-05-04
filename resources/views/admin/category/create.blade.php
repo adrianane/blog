@@ -38,7 +38,7 @@
 		                    <input type="file" class="form-control" name="image"/>
 		                </div>
 		            	-->
-		                 <div class="form-check">
+		                <div class="form-check">
 		                    <input class="form-check-input" type="checkbox" value="true" name="status" id="status" />
     		                <label class="form-check-label" for="status">Status(Visible in FE)</label>
 		                </div>
@@ -56,7 +56,8 @@
 		                    <label>MetaKeyword</label>
 		                    <textarea class="form-control" name="meta_keyword" rows="3"></textarea>
 		                </div>
-		                <button type="submit" class="btn btn-primary">Submit</button>
+		                <br>
+	                	<button type="submit" class="btn btn-primary">Submit</button>
 		            </form>
             </div>
         </div>

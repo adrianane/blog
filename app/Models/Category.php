@@ -14,7 +14,6 @@ class Category extends Model
         'name',
         'slug',
         'description',
-        'image',
         'status',
         'meta_title',
         'meta_description',

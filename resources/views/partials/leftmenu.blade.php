@@ -15,10 +15,5 @@
           Categories
         </a>
       </li>
-      <li>
-        <a href="/admin/tags" class="nav-link {{ Request::path() === 'admin/tags' ? 'active' : '' }}">
-          Tags
-        </a>
-      </li>
     </ul>
 </div>

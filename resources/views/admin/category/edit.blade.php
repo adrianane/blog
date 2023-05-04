@@ -9,7 +9,7 @@
         </div>
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">Create category</div>
+                <div class="card-header">Edit {{$category->name}}</div>
                 <div class="card-body">
                 	@if ($errors->any())
 	                	<div class="alert alert-danger">
@@ -33,7 +33,7 @@
 		                    <label>Description</label>
             				<textarea name="description" class="form-control" rows="3">{{$category->description}}</textarea>
 		                </div>
-		                 <div class="form-check">
+		                <div class="form-check">
 		                    <input class="form-check-input" 
 		                    	type="checkbox" 
 		                    	value="true" 
@@ -58,6 +58,7 @@
 		                    <textarea class="form-control" name="meta_keyword" rows="3">{{$category->meta_keyword}}
 		                    </textarea>
 		                </div>
+		                <br>
 		                <button type="submit" class="btn btn-primary">Submit</button>
 		            </form>
             </div>

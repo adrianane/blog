@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Requests\Admin\AddCategoryFormRequest;
 use App\Models\Category;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -36,7 +37,7 @@ class CategoryController extends Controller
         $dataRequest = $request->validated();
         $category = new Category();
         $category->name = $dataRequest['name'];
-        $category->slug = $dataRequest['slug'];
+        $category->slug = Str::slug($dataRequest['slug']);
         $category->description = $dataRequest['description'];
         /*
         if ($request->hasfile('image')) {
@@ -83,7 +84,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
 
         $category->name = $dataRequest['name'];
-        $category->slug = $dataRequest['slug'];
+        $category->slug = Str::slug($dataRequest['slug']);
         $category->description = $dataRequest['description'];
         $category->meta_title = $dataRequest['meta_title'];
         $category->meta_description = $dataRequest['meta_description'];

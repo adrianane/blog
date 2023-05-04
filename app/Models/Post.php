@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
+use App\Models\Category;
 
 class Post extends Model
 {
@@ -14,13 +16,18 @@ class Post extends Model
     protected $fillable = [
         'title',
         'body',
-        'image_path',
-        'image_alt',
-        'published',
-        'category_id',
-        'user_id',
-        'tag_id'
+        'slug',
+        'status',
+        'meta_title',
+        'meta_description',
+        'meta_keyword',
+        'category_id'
     ];
+
+    public function getShortDescriptionAttribute()
+    {
+        return Str::words($this->body, 5, '...');
+    }
 
     //create relation: a single post belongs to a user 
     public function user() 
