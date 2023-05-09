@@ -28,7 +28,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view('posts.index')->with('posts', $posts);
+        return view('admin.post.index')->with('posts', $posts);
     }
 
     /**
@@ -38,7 +38,7 @@ class PostController extends Controller
     {
         $publishedCategories = Category::where('status', 1)->get();
 
-        return view('posts.create')->with('categories', $publishedCategories);
+        return view('admin.post.create')->with('categories', $publishedCategories);
     }
 
         /**
@@ -77,7 +77,7 @@ class PostController extends Controller
     public function show($id)
     {
         $currentPost = Post::find($id);
-        return view('posts.show')->with('post',  $currentPost);
+        return view('admin.post.show')->with('post',  $currentPost);
     }
 
     /**
@@ -96,7 +96,7 @@ class PostController extends Controller
             return redirect('admin/posts')->with('error', 'Unauthorized page!');
         }
 
-        return view('posts.edit')->with(
+        return view('admin.post.edit')->with(
             [
                 'post' => $post, 
                 'categories' => $categories

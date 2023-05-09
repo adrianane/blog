@@ -8,7 +8,8 @@ use Illuminate\Http\Response;
 use App\Http\Requests\Admin\AddCategoryFormRequest;
 use App\Models\Category;
 use Illuminate\Support\Str;
-
+use Exception;
+    
 class CategoryController extends Controller
 {
     /**
@@ -101,8 +102,15 @@ class CategoryController extends Controller
     public function destroy(string $id): RedirectResponse
     {
         $category = Category::find($id);
-        $category->delete();
+        //delete also related posts
+        try { 
+            $category->posts()->delete();
+            $category->delete();
+        } catch (Exception $e) {
+            return redirect('/admin/categories')->with('error', $e->getMessage());
+        }
+       
 
-        return redirect('/admin/categories')->with('message', 'Category deleted!');
+        return redirect('/admin/categories')->with('message', 'Category and related posts are deleted!');
     }
 }

@@ -22,15 +22,15 @@
 		                {{ csrf_field() }}
 		                <div class="form-group">
 		                    <label>Name</label>
-		                    <input type="text" class="form-control" name="name" value="{{ old('foo') }}">
+		                    <input type="text" required class="form-control" name="name" value="{{ old('foo') }}">
 		                </div>
 		                <div class="form-group">
 		                    <label>Slug</label>
-		                    <input type="text" class="form-control" name="slug">
+		                    <input type="text" required class="form-control" name="slug">
 		                </div>
 		                <div class="form-group">
 		                    <label>Description</label>
-		                    <textarea name="description" class="form-control" rows="3"></textarea>
+		                    <textarea name="description" required class="form-control" rows="3"></textarea>
 		                </div>
 		                <!--
 		                <div class="form-group">
@@ -46,15 +46,15 @@
 		                <strong>Seo tags</strong>
 		                <div class="form-group">
 		                    <label>Metatitle</label>
-		                    <input type="text" class="form-control" name="meta_title">
+		                    <input type="text" required class="form-control" name="meta_title">
 		                </div>
 		                <div class="form-group">
 		                    <label>Metadescription</label>
-		                    <textarea class="form-control" name="meta_description" rows="3"></textarea>
+		                    <textarea class="form-control" required name="meta_description" rows="3"></textarea>
 		                </div>
 		                <div class="form-group">
 		                    <label>MetaKeyword</label>
-		                    <textarea class="form-control" name="meta_keyword" rows="3"></textarea>
+		                    <textarea class="form-control" required name="meta_keyword" rows="3"></textarea>
 		                </div>
 		                <br>
 	                	<button type="submit" class="btn btn-primary">Submit</button>

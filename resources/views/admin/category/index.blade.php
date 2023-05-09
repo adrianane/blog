@@ -13,6 +13,11 @@
         		{{ session('message') }}
         	</div>
         	@endif
+        	@if(session('error'))
+            	<div class="alert alert-danger">
+	        		{{ session('error') }}
+            	</div>
+        	@endif
 			<a class="btn btn-primary" href="/admin/categories/create" role="button">Add new</a>
 			@if($categories)
 			<table class="table">
@@ -31,7 +36,7 @@
 					 <tr>
 					 	<td>{{$category->id}}</td>
 					 	<td>{{$category->name}}</td>
-					 	<td>{{$category->description}}</td>
+					 	<td>{!! $category->description !!}</td>
 					 	<td>{{$category->status}}</td>  
 		                <td>
 		                <a href="/admin/categories/{{$category->id}}/edit" class="btn btn-warning">Edit</a>

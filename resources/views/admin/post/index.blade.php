@@ -38,7 +38,7 @@
                                 @endif
                             </td>
                             <td>{{$post->title}}</td>
-                            <td>{{$post->short_description}}</td>
+                            <td>{!! $post->short_description !!}</td>
                             <td>{{$post->status}}</td> 
                             <td>{{ $post->user->name}}</td>   
                             <td>

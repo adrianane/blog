@@ -22,7 +22,7 @@
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label>Category</label>
-                            <select class="form-control" name="category_id">
+                            <select required class="form-control" name="category_id">
                                 <option value="">--Select category--</option>
                                 @foreach ($categories as $category)
                                 <option value="{{$category->id}}">{{$category->name}}</option>
@@ -31,16 +31,16 @@
                         </div>
                         <div class="form-group">
                             <label>Title</label>
-                            <input type="text" class="form-control" name="title" placeholder="Enter a title">
+                            <input type="text" required class="form-control" name="title" placeholder="Enter a title">
                         </div>
                         <div class="form-group">
                             <label>Slug</label>
-                            <input type="text" class="form-control" name="slug" placeholder="Enter a slug">
+                            <input type="text" required class="form-control" name="slug" placeholder="Enter a slug">
                         </div>
                         <div class="form-group">
                             <label>Body</label>
                             <textarea id="any_summernote" 
-                            name="body" class="form-control" rows="8"></textarea>
+                            name="body" required class="form-control" rows="8"></textarea>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="true" name="status" id="status" />
@@ -50,15 +50,15 @@
                         <strong>Seo tags</strong>
                         <div class="form-group">
                             <label>Metatitle</label>
-                            <input type="text" class="form-control" name="meta_title">
+                            <input type="text" required class="form-control" name="meta_title">
                         </div>
                         <div class="form-group">
                             <label>Metadescription</label>
-                            <textarea class="form-control" name="meta_description" rows="3"></textarea>
+                            <textarea class="form-control" required name="meta_description" rows="3"></textarea>
                         </div>
                         <div class="form-group">
                             <label>MetaKeyword</label>
-                            <textarea class="form-control" name="meta_keyword" rows="3"></textarea>
+                            <textarea class="form-control" required name="meta_keyword" rows="3"></textarea>
                         </div>
                         <br>
                         <button type="submit" class="btn btn-primary">Submit</button>
