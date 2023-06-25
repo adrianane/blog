@@ -12,7 +12,12 @@ class FrontendController extends Controller
     public function index()
     {
         $categories = Category::where('status', 1)->get();
-        return view('frontend.index')->with('categories', $categories);
+        $posts = Post::where('status', 1)->paginate(15);
+        
+        return view('frontend.index')->with([
+                'posts' => $posts,
+                'categories' => $categories
+            ]);;
     }
 
     public function viewCategoryPost($categorySlug)
@@ -23,7 +28,7 @@ class FrontendController extends Controller
         ->where('status', 1)->first();
         if ($category) {
             $posts = Post::where('category_id', $category->id)
-            ->where('status', 1)->get();
+            ->where('status', 1)->paginate(15);
 
             return view('frontend.post.index')->with([
                     'categories' => $categories,
@@ -38,6 +43,9 @@ class FrontendController extends Controller
 
     public function viewPostBySlug($categorySlug, $postSlug)
     {
+
+        $categories = Category::where('status', 1)->get();
+
         $category = Category::where('slug', $categorySlug)
         ->where('status', 1)->first();
         if ($category) {
@@ -49,11 +57,11 @@ class FrontendController extends Controller
 
             return view('frontend.post.show')->with([
                 'post' => $post,
+                'categories' => $categories,
                 'latestPosts' => $latestPosts
             ]);
         } else {
             return redirect('/');
         }
-       
     }
 }

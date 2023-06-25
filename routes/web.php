@@ -15,11 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/', [App\Http\Controllers\Frontend\FrontendController::class, 'index']);
-Route::get('categorie/{categorySlug}', [App\Http\Controllers\Frontend\FrontendController::class, 'viewCategoryPost']);
+Route::get('categorie/{categorySlug}', [App\Http\Controllers\Frontend\FrontendController::class, 'viewCategoryPost'])->name('fe.categorie');
 Route::get('articol/{categorySlug}/{postSlug}', [App\Http\Controllers\Frontend\FrontendController::class, 'viewPostBySlug']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function() {
+Route::prefix('admin')->middleware(['auth', 'isAdmin'])->name('admin.')->group(function() {
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
     Route::resource('posts', App\Http\Controllers\PostController::class);
     Route::resource('categories', App\Http\Controllers\CategoryController::class);
