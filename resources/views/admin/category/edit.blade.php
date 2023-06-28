@@ -2,7 +2,7 @@
 
 @section('title','Add category')
 @section('content')
-<div class="container">
+<div class="container admin">
     <div class="row justify-content-center">
         <div class="col-md-2">
             @include('partials.leftmenu')

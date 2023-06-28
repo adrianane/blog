@@ -17,6 +17,8 @@ class Post extends Model
         'title',
         'body',
         'slug',
+        'image_path',
+        'image_alt',
         'status',
         'meta_title',
         'meta_description',

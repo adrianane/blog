@@ -29,16 +29,17 @@
 		</div>
 	</div>
 
-<div class="container mt-5 max-cont">
+<div class="container mt-5 max-cont custom-content">
     <div class="row justify-content-center">
         <div class="col-md-12">
     		<div class="flex-wrap">
 		      	@foreach($posts as $post)
 		      		<div class="flex-box white-content">
-		      			<div class="flex-img">
-					        <a href="/" src="#" alt="">
+		      			<div class=" flex-img">
+					        <a href="{{ url('articol/' . $category->slug . '/' . $post->slug) }}">
+                                <img src="{{asset( '/' . $post->image_path) }}" class="w-100" alt="{{ $post->image_alt }}">
 					        </a>
-				    	</div>
+					    </div>
 						<div class="flex-content white-content">
 							<a href="{{ url('articol/' . $category->slug . '/' . $post->slug) }}" class="card-link">
 								<h3 class="card-title bold">{{ $post->title }}</h3>

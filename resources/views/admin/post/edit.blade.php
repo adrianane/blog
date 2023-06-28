@@ -2,7 +2,7 @@
 
 @section('title','Posts')
 @section('content')
-<div class="container">
+<div class="container admin">
     <div class="row justify-content-center">
         <div class="col-md-2">
             @include('partials.leftmenu')
@@ -18,7 +18,7 @@
                             @endforeach
                         </div>
                     @endif
-                    <form method="POST" action="/admin/posts/{{$post->id}}">
+                    <form method="POST" action="/admin/posts/{{$post->id}}" enctype="multipart/form-data">
                         <input type="hidden" name="_method" value="PUT">
                         {{ csrf_field() }}
                         <div class="form-group">
@@ -49,6 +49,14 @@
                         <div class="form-group">
                             <label>Body</label>
                             <textarea name="body" id="any_summernote" class="form-control" rows="3" value="{{$post->body}}"></textarea>
+                        </div>
+                            <div class="form-group">
+                            <label>Image</label>
+                            <input type="file" class="form-control" name="image_path" placeholder="Enter an image">
+                        </div>
+                        <div class="form-group">
+                            <label>Alt image</label>
+                            <input type="text" required class="form-control" name="image_alt" placeholder="Enter alt" value="{{$post->image_alt}}">
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" 

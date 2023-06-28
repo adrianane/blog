@@ -35,6 +35,14 @@ class PostFormRequest extends FormRequest
             'body' => [
                 'required'
             ],
+            'image_path' => [
+                'nullable',
+            ],
+            'image_alt' => [
+                'required',
+                'string',
+                'max:200'
+            ],
             'meta_title' => [
                 'required',
                 'string',

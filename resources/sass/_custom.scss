@@ -74,8 +74,8 @@ a {
 				padding: 10px;
 				&.nav-link {
 					&.active {
-					  	text-decoration: overline solid #009a86 20%;
-	  		    	    background: white;					
+					  	text-decoration: overline solid #009a86 20% !important;
+	  		    	    background: white;		
 				  	}
 				  	&:hover {
 		    	    	background: white;			
@@ -120,7 +120,6 @@ footer {
 
 .white-content {
 	background-color: white;
-	padding: 15px;
 }
 
 .last-articles {
@@ -163,6 +162,9 @@ footer {
   .flex-box {
 		list-style: none;
 		flex: 0 0 33.333333%;
+		.flex-content {
+			padding: 15px;
+		}
   }
 
 }
@@ -171,13 +173,21 @@ footer {
 	border-radius: 10px;
 	--tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),0 4px 6px -2px rgba(0, 0, 0, 0.05);
     box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);
-        border-radius: 0.5rem;
+    .flex-img {
+	    img {
+	    	height: 400px;
+	    	object-fit: cover;
+	    }
+    }  
 }
 
 .short-desc {
 	margin-bottom: 15px;
 }
 
+.custom-content {
+	padding: 15px;
+}
 
 /*MOBILE*/
 
@@ -187,5 +197,17 @@ footer {
 	  .flex-box {
 			flex: 100%;
 	  }
+	}
+}
+
+
+.admin {
+	a {
+		&.btn {
+			color: white;
+			&.btn-primary {
+				color:white;
+			}
+		}
 	}
 }

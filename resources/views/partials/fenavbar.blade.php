@@ -2,7 +2,7 @@
 	<div class="container max-cont">
 		<div class="row flex items-center lg:justify-between" id="logo-row">
 			<div class="col-md-4 ml-4 flex lg:ml-0">
-				<a id="logo" href="/" class="text-xl mr-5 hover:border-blue-800 border-2 border-black">MAMACADO</a>
+				<a id="logo" href="/" class="text-xl mr-5 hover:border-blue-800 border-2 border-black">MAMACADO.RO</a>
 			</div>
 			<!--search
 			<div class="header_search w-full hidden lg:block">

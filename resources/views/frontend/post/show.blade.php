@@ -4,8 +4,9 @@
 
 @section('meta_description', "$post->meta_description")
 
-@section('meta_keyword', "$post->meta_keyword")@section('content')
+@section('meta_keyword', "$post->meta_keyword")
 
+@section('content')
 	<div class="container-fluid">
 		<div class="row">
 			<nav class="navbar navbar-expand-lg header-bottom-wrapper">
@@ -17,7 +18,7 @@
 			      <ul class="navbar-nav">
 			      	@foreach($categories as $category)
 			        <li class="nav-item">
-			          <a class="nav-link" aria-current="page" href="{{ url('categorie/' . $category->slug) }}">
+			          <a class="nav-link {{ (strpos(Route::currentRouteName(), 'fe.categorie') == 0 && (request()->segment(2) == $category->slug)) ? 'active' : '' }}" aria-current="page" href="{{ url('categorie/' . $category->slug) }}">
 			          	{{ $category->name }}</a>
 			        </li>
 			      	@endforeach
@@ -30,7 +31,7 @@
 	<div class="container mt-5 max-cont">
 		<div class="row">
 			<div class="col-md-8">				
-				<div class="white-content min-vh-100">
+				<div class="white-content min-vh-100 custom-content">
 					<nav aria-label="breadcrumb">
 					  <ol class="breadcrumb">
 					    <li class="breadcrumb-item">

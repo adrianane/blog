@@ -2,7 +2,7 @@
 
 @section('title','Posts')
 @section('content')
-<div class="container">
+<div class="container admin">
     <div class="row justify-content-center">
         <div class="col-md-2">
             @include('partials.leftmenu')
@@ -21,6 +21,7 @@
                             <th>Id</th>
                             <th>Category</th>
                             <th>Title</th>
+                            <th>Image</th>
                             <th>Body</th>
                             <th>FE Status</th>
                             <th>Created by</th>
@@ -38,6 +39,13 @@
                                 @endif
                             </td>
                             <td>{{$post->title}}</td>
+                            <td>
+                                @if($post->image_path)
+                                    <img src="{{asset( '/' . $post->image_path) }}" width="50" height="50">
+                                @else
+                                    <span style="color: red;">Missing</span>
+                                @endif
+                            </td>
                             <td>{!! $post->short_description !!}</td>
                             <td>{{$post->status}}</td> 
                             <td>{{ $post->user->name}}</td>   

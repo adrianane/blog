@@ -31,28 +31,34 @@
 
 <div class="container mt-5 max-cont">
     <div class="row justify-content-center">
-        <div class="col-md-12 white-content short-desc">
-        	Short desc before!
-        	<br>
-        	<br>        	
-        	<br>
+        <div class="col-md-12 white-content short-desc custom-content">
+        	Bine ai venit in lumea Mamacado! <br><br>
+        	Eu sunt mama de Matei si de cand am devenit mamica, viata mea s-a schimbat in multe feluri.
+        	Doresc sa impartasesc experientele mele din aceasta noua lume  pentru a ajuta alte mamici la 
+        	inceputul si in timpul acestei perioade de mamicitie minunata!
+        	<br><br>
+        	Aici vei gasi informatii despre pregatirea inainte de nastere, despre experienta nasterii, primele zile cu bebe acasa si tot ce e nevoie pentru a intampina noul membru in familie, despre calatorii cu bebe, si alte experiente traite de mine de cand am devenit mamica. <br/></br>
+        	Fiecare copil este unic, la fel ca fiecare mama si fiecare experienta! Sper sa te regasesti in postarile mele si sa fie de ajutor informatiile pe care am decis sa le impartasesc!
         </div>
     	<div class="flex-wrap">
 	      	@foreach($posts as $post)
-	      		<div class="flex-box white-content">
-	      			<div class="flex-img">
-				        <a href="/" src="#" alt="">
-				        </a>
-				    </div>
-					<div class="flex-content white-content">
-		      			<a href="{{ url('articol/' . $category->slug . '/' . $post->slug) }}">
+      		<div class="flex-box white-content">
+		      	<div class="flex-img">
+			        <a href="{{ url('articol/' . $post->category->slug . '/' . $post->slug) }}">
+			        	 <img src="{{asset( '/' . $post->image_path) }}" class="w-100" alt="{{ $post->image_alt }}">
+			        </a>
+			    </div>
+	      		<div class="white-content">
+					<div class="flex-content">
+		      			<a href="{{ url('articol/' . $post->category->slug . '/' . $post->slug) }}">
 		      				<span class="categ">{{ $post->category->name }}</span>
 							<h3 class="card-title bold">{{ $post->title }}</h3>
 							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 					      	<p class="card-text"><small class="text-muted">{{ $post->created_at->format('d.m.Y') }}</small></p>
 				      	</a>
 					</div>
-				</div>     	
+				</div>  
+			</div>     	   	
 	      	@endforeach		
 		</div>
     	<div class="pagination">

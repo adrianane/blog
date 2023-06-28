@@ -35,9 +35,6 @@ class AddCategoryFormRequest extends FormRequest
             'description' => [
                 'required'
             ],
-            /*'image' => [
-                'mimes: jpg, jpeg, png'
-            ],*/
             'meta_title' => [
                 'required',
                 'string',

@@ -9,6 +9,7 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Http\Requests\Admin\PostFormRequest;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
@@ -55,6 +56,20 @@ class PostController extends Controller
         $post->title = $dataRequest['title'];
         $post->body = $dataRequest['body'];
         $post->slug = Str::slug($dataRequest['slug']);
+        
+        if ($request->hasFile('image_path')) {
+            //save alt image
+            $post->image_alt = $dataRequest['image_alt'];
+
+            $file = $request->file('image_path');
+            $fileName = time() . '.' . $file->getClientOriginalExtension();
+            if ($file->getClientOriginalExtension() === 'jpg' || $file->getClientOriginalExtension() === 'jpeg'
+                || $file->getClientOriginalExtension() === 'png') {
+                $file->move('uploads/posts/' , $fileName);
+                $post->image_path = 'uploads/posts/' . $fileName;
+            }
+        }
+
         $post->meta_title = $dataRequest['meta_title'];
         $post->meta_description = $dataRequest['meta_description'];
         $post->meta_keyword = $dataRequest['meta_keyword'];
@@ -76,6 +91,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
+        die($id);
         $currentPost = Post::find($id);
         return view('admin.post.show')->with('post',  $currentPost);
     }
@@ -120,6 +136,24 @@ class PostController extends Controller
         $post->title = $dataRequest['title'];
         $post->body = $dataRequest['body'];
         $post->slug = Str::slug($dataRequest['slug']);
+        if ($request->hasFile('image_path')) {
+            //save alt img
+            $post->image_alt = $dataRequest['image_alt'];
+
+            //delete existing uploaded file
+            if (File::exists($post->image_path)) {
+                File::delete($post->image_path);
+            }
+            //save new file
+            $file = $request->file('image_path');
+            $fileName = time() . '.' . $file->getClientOriginalExtension();
+            if ($file->getClientOriginalExtension() === 'jpg' || $file->getClientOriginalExtension() === 'jpeg'
+                || $file->getClientOriginalExtension() === 'png' || $file->getClientOriginalExtension() === 'JPG' || $file->getClientOriginalExtension() === 'JPEG'
+                || $file->getClientOriginalExtension() === 'PNG') {
+                $file->move('uploads/posts/' , $fileName);
+                $post->image_path = 'uploads/posts/' . $fileName;
+            }
+        }
         $post->meta_title = $dataRequest['meta_title'];
         $post->meta_description = $dataRequest['meta_description'];
         $post->meta_keyword = $dataRequest['meta_keyword'];
