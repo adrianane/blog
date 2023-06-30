@@ -64,4 +64,24 @@ class FrontendController extends Controller
             return redirect('/');
         }
     }
+
+    public function search(Request $request) {
+        $categories = Category::where('status', 1)->get();
+
+        $search = $request->input('search');
+
+        $posts = Post::query()
+            ->where('title', 'LIKE', "%{$search}%")
+            ->orWhere('body', 'LIKE', "%{$search}%")
+            ->paginate(15);
+        $searchResMsg = 'Rezultate pentru: ' . $search;
+        if ($posts->count() === 0) {
+            $searchResMsg = 'Nu s-au gasit rezultate pentru: ' . $search . '!';
+        }
+        return view('frontend.search')->with([
+                'posts' => $posts,
+                'categories' => $categories,
+                'searchResMsg' => $searchResMsg
+            ]);
+    }
 }

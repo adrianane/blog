@@ -64,7 +64,7 @@ class PostController extends Controller
             $file = $request->file('image_path');
             $fileName = time() . '.' . $file->getClientOriginalExtension();
             if ($file->getClientOriginalExtension() === 'jpg' || $file->getClientOriginalExtension() === 'jpeg'
-                || $file->getClientOriginalExtension() === 'png') {
+                || $file->getClientOriginalExtension() === 'png' || $file->getClientOriginalExtension() === 'JPG' || $file->getClientOriginalExtension() === 'JPEG'|| $file->getClientOriginalExtension() === 'PNG') {
                 $file->move('uploads/posts/' , $fileName);
                 $post->image_path = 'uploads/posts/' . $fileName;
             }
@@ -91,7 +91,6 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        die($id);
         $currentPost = Post::find($id);
         return view('admin.post.show')->with('post',  $currentPost);
     }
