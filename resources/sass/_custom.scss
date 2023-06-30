@@ -17,6 +17,10 @@ input {
     }
 }
 
+.header_search {
+	padding-top: 15px
+}
+
 
  .search-icon {
 	float: right;
@@ -212,6 +216,24 @@ footer {
 	  .flex-box {
 			flex: 100%;
 	  }
+	}
+
+	.header-bottom-wrapper {
+		.container-fluid {
+			margin-top: 10px;
+		    margin-bottom: 10px;
+		}
+	}
+}
+
+/*TABLET*/
+@media only screen and (max-width: 992px) {
+
+	.header-bottom-wrapper {
+		.container-fluid {
+			margin-top: 10px;
+		    margin-bottom: 10px;
+		}
 	}
 }
 

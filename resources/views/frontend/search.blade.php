@@ -16,6 +16,11 @@
 		    </button>
 		    <div class="collapse navbar-collapse main-menu nav justify-content-center" id="navbarNavDropdown">
 		      <ul class="navbar-nav">
+		      	<li class="nav-item">
+		         	 <a class="nav-link {{ Request::path() == '/' ? 'active' : '' }}" aria-current="page" href="/">
+			          	HOME
+			          </a>
+		        </li>
 		      	@foreach($categories as $category)
 		        <li class="nav-item">
 		          <a class="nav-link" aria-current="page" href="{{ url('categorie/' . $category->slug) }}">
@@ -29,7 +34,7 @@
 	</div>
 </div>
 
-<div class="container mt-5 max-cont">
+<div class="container mt-4 max-cont">
     <div class="row justify-content-center">
     	<div class="msg">
 			<h2> {{ $searchResMsg }} </h2>

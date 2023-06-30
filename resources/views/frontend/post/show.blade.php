@@ -16,6 +16,11 @@
 			    </button>
 			    <div class="collapse navbar-collapse main-menu justify-content-center" id="navbarNavDropdown">
 			      <ul class="navbar-nav">
+			      	<li class="nav-item">
+			         	 <a class="nav-link {{ Request::path() == '/' ? 'active' : '' }}" aria-current="page" href="/">
+				          	HOME
+				          </a>
+			        </li>
 			      	@foreach($categories as $category)
 			        <li class="nav-item">
 			          <a class="nav-link {{ (strpos(Route::currentRouteName(), 'fe.categorie') == 0 && (request()->segment(2) == $category->slug)) ? 'active' : '' }}" aria-current="page" href="{{ url('categorie/' . $category->slug) }}">
@@ -28,7 +33,7 @@
 			</nav>
 		</div>
 	</div>
-	<div class="container mt-5 max-cont">
+	<div class="container mt-4 max-cont">
 		<div class="row">
 			<div class="col-md-8">				
 				<div class="white-content min-vh-100 custom-content">
