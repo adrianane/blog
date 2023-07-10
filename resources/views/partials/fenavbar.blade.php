@@ -8,7 +8,9 @@
 				<form action="{{ route('search') }}" method="GET" id="searchform">
 					{{ csrf_field() }}
 					<input name="search" class="vce-search-input" size="20" type="text" placeholder="Cauta..."/>
-					<i class="bi bi-search search-icon"></i>
+					<button type="submit" class="vce-search-submit" aria-label="Cauta" title="Cauta">
+						<i class="bi bi-search search-icon"></i>
+					</button>
 				</form>
 			</div>
 			<!--

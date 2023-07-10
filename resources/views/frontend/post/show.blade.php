@@ -48,7 +48,10 @@
 					  </ol>
 					</nav>
 					<hr>
-					<h1>{{$post->title}}</h1>
+					<h1 class="text-center">{{$post->title}}</h1>
+					<div class="img-article text-center">
+		        		<img src="{{asset( '/' . $post->image_path) }}" height="400" alt="{{ $post->image_alt }}">
+		        	</div>
 					<div>{!! $post->body !!}</div>
 				</div>
 			</div>
