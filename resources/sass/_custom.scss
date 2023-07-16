@@ -21,6 +21,21 @@ input {
 	padding-top: 15px
 }
 
+/*cookie consent*/
+.cookie-consent {
+	position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1030;
+    text-align: center;
+    background-color: #009a86;
+    color: white;
+    button {
+    	margin-left: 15px;
+    }
+}
+
 /*image from show article template*/
 .img-article {
 	padding-bottom: 15px;

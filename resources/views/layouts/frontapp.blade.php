@@ -18,7 +18,7 @@
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-
+    @include('cookie-consent::index')
 
 </head>
 <body class="d-flex flex-column min-vh-100">
