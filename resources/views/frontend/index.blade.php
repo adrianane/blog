@@ -1,6 +1,6 @@
 @extends('layouts.frontapp')
 
-@section('title','Ganduri de mama')
+@section('title','Mamacado')
 
 @section('meta_description', "Blog despre nastere, parenting, bebelusi")
 
