@@ -12,7 +12,7 @@ class FrontendController extends Controller
     public function index()
     {
         $categories = Category::where('status', 1)->get();
-        $posts = Post::where('status', 1)->paginate(15);
+        $posts = Post::where('status', 1)->orderBy('created_at')->paginate(15);
         
         return view('frontend.index')->with([
                 'posts' => $posts,
