@@ -48,7 +48,7 @@
 						<div class="flex-content white-content">
 							<a href="{{ url('articol/' . $category->slug . '/' . $post->slug) }}" class="card-link">
 								<h3 class="card-title bold">{{ $post->title }}</h3>
-								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+								<p class="card-text">{!! $post->short_description !!}</p>
 						      	<p class="card-text"><small class="text-muted">{{ $post->created_at->format('d.m.Y') }}</small></p>
 					      	</a>
 						</div>
