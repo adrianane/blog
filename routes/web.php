@@ -19,7 +19,7 @@ Route::get('categorie/{categorySlug}', [App\Http\Controllers\Frontend\FrontendCo
 Route::get('articol/{categorySlug}/{postSlug}', [App\Http\Controllers\Frontend\FrontendController::class, 'viewPostBySlug']);
 Route::get('/cauta/', [App\Http\Controllers\Frontend\FrontendController::class, 'search'])->name('search');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('sitemap.xml',[App\Http\Controllers\SitemapController::class, 'index']);
 Route::prefix('admin')->middleware(['auth', 'isAdmin'])->name('admin.')->group(function() {
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
     Route::resource('posts', App\Http\Controllers\PostController::class);
