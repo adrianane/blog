@@ -152,7 +152,7 @@ footer {
 	}
 	
 }
-.breadcrumb {
+.breadcrumb, .white-content {
 	a {
 		text-decoration: none !important;
 		color: #009a86 !important;
@@ -161,6 +161,14 @@ footer {
 		}
 	}
 }
+
+.white-content {
+	a {
+		font-weight: bold;
+	}
+}
+
+
 #logo-row {
 	min-height: 34px;
 }

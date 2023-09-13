@@ -107,7 +107,7 @@ class PostController extends Controller
         $categories = Category::where('status', 1)->get();
 
         //check for correct user
-        if(auth()->user()->id !== $post->user_id){
+        if(auth()->user()->id != $post->user_id){
             return redirect('admin/posts')->with('error', 'Unauthorized page!');
         }
 

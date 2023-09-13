@@ -17,7 +17,7 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::check()) {
-            if (Auth::user()->role_as === 1) { //1=admin
+            if (Auth::user()->role_as == 1) { //1=admin
                 return $next($request);
             } else {
                 return redirect('/home')->with('status', 'Access denied!');
