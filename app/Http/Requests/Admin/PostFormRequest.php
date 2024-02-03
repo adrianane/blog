@@ -27,6 +27,10 @@ class PostFormRequest extends FormRequest
                 'string',
                 'max:200'
             ],
+            'preview' => [
+                'string',
+                'max:500'
+            ],
             'slug' => [
                 'required',
                 'string',

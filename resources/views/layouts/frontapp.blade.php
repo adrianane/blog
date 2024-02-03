@@ -10,6 +10,10 @@
 
       gtag('config', 'G-LLC8XBCHXF');
     </script>
+    
+    <!-- GetYourGuide Analytics -->
+    <script async defer src="https://widget.getyourguide.com/dist/pa.umd.production.min.js" data-gyg-partner-id="228UN0Y"></script>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -32,7 +36,7 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
     <div id="app">
-        <main class="py-4">
+        <main>
             @include('partials.fenavbar')
             @yield('content')
         </main>

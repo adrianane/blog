@@ -15,6 +15,7 @@ class Post extends Model
 
     protected $fillable = [
         'title',
+        'preview',
         'body',
         'slug',
         'image_path',
@@ -25,11 +26,6 @@ class Post extends Model
         'meta_keyword',
         'category_id'
     ];
-
-    public function getShortDescriptionAttribute()
-    {
-        return Str::words($this->body, 5, '...');
-    }
 
     //create relation: a single post belongs to a user 
     public function user() 

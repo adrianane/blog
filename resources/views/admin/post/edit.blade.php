@@ -40,6 +40,13 @@
                                 value="{{$post->title}}">
                         </div>
                         <div class="form-group">
+                            <label>Preview</label>
+                            <input type="text" 
+                                class="form-control" 
+                                name="preview" placeholder="Enter a preview" 
+                                value="{{$post->preview}}">
+                        </div>
+                        <div class="form-group">
                             <label>Slug</label>
                             <input type="text" 
                                 class="form-control" 

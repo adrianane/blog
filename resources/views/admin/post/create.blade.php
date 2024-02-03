@@ -34,6 +34,10 @@
                             <input type="text" required class="form-control" name="title" placeholder="Enter a title">
                         </div>
                         <div class="form-group">
+                            <label>Preview</label>
+                            <input type="text" required class="form-control" name="preview" placeholder="Enter a preview">
+                        </div>
+                        <div class="form-group">
                             <label>Slug</label>
                             <input type="text" required class="form-control" name="slug" placeholder="Enter a slug">
                         </div>

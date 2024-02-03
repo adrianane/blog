@@ -22,7 +22,6 @@
                             <th>Category</th>
                             <th>Title</th>
                             <th>Image</th>
-                            <th>Body</th>
                             <th>FE Status</th>
                             <th>Created by</th>
                             <th>Edit</th>
@@ -46,7 +45,6 @@
                                     <span style="color: red;">Missing</span>
                                 @endif
                             </td>
-                            <td>{!! $post->short_description !!}</td>
                             <td>{{$post->status}}</td> 
                             <td>{{ $post->user->name}}</td>   
                             <td>

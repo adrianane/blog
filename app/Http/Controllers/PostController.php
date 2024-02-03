@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Http\Requests\Admin\PostFormRequest;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
+use DOMDocument;
 
 class PostController extends Controller
 {
@@ -54,7 +55,24 @@ class PostController extends Controller
         $post = new Post();
 
         $post->title = $dataRequest['title'];
-        $post->body = $dataRequest['body'];
+        $post->preview = $dataRequest['preview'];
+        //body start
+        $description = $dataRequest['body'];
+ 
+        $dom = new DOMDocument();
+        $dom->loadHTML($description,9);
+ 
+        $images = $dom->getElementsByTagName('img');
+ 
+        foreach ($images as $key => $img) {
+            $data = base64_decode(explode(',',explode(';',$img->getAttribute('src'))[1])[1]);
+            $image_name = "uploads/posts/" . time(). $key.'.png';
+            file_put_contents($image_name,$data);
+            $img->removeAttribute('src');
+            $img->setAttribute('src', '/' . $image_name);
+        }
+        $post->body = $dom->saveHTML();
+        //body end
         $post->slug = Str::slug($dataRequest['slug']);
         
         if ($request->hasFile('image_path')) {
@@ -133,7 +151,30 @@ class PostController extends Controller
 
         $post = Post::find($id);
         $post->title = $dataRequest['title'];
-        $post->body = $dataRequest['body'];
+        $post->preview = $dataRequest['preview'];
+        //body start
+        $description = $dataRequest['body'];
+        $dom = new DOMDocument();
+        $dom->loadHTML($description,9);
+ 
+        $images = $dom->getElementsByTagName('img');
+ 
+        foreach ($images as $key => $img) {
+ 
+            // Check if the image is a new one
+            if (strpos($img->getAttribute('src'),'data:image/') ===0) {
+               
+                $data = base64_decode(explode(',',explode(';',$img->getAttribute('src'))[1])[1]);
+                $image_name = "uploads/posts/" . time(). $key.'.png';
+                file_put_contents($image_name,$data);
+                 
+                $img->removeAttribute('src');
+                $img->setAttribute('src', '/' . $image_name);
+            }
+ 
+        }
+        $post->body = $dom->saveHTML();
+        //body end
         $post->slug = Str::slug($dataRequest['slug']);
         if ($request->hasFile('image_path')) {
             //save alt img
@@ -177,6 +218,18 @@ class PostController extends Controller
         //check for correct user
         if(auth()->user()->id !== $post->user_id){
             return redirect('/admin/posts')->with('error', 'Unauthorized page!');
+        }
+
+        $dom= new DOMDocument();
+        $dom->loadHTML($post->body,9);
+        $images = $dom->getElementsByTagName('img');
+ 
+        foreach ($images as $key => $img) {             
+            $src = $img->getAttribute('src');
+            $path = Str::of($src)->after('/');
+            if (File::exists($path)) {
+                File::delete($path);
+            }
         }
 
         $post->delete();

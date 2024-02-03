@@ -7,33 +7,6 @@
 @section('meta_keyword', "Parenting, mama, bebe, diversificare, calatorii, nastere, regina maria")
 
 @section('content')
-<div class="container-fluid">
-	<div class="row">
-		<nav class="navbar navbar-expand-lg header-bottom-wrapper">
-		  <div class="container-fluid">
-		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-		      <span class="navbar-toggler-icon"></span>
-		    </button>
-		    <div class="collapse navbar-collapse main-menu nav justify-content-center" id="navbarNavDropdown">
-		      <ul class="navbar-nav">
-		      	<li class="nav-item">
-		          <a class="nav-link {{ Request::path() == '/' ? 'active' : '' }}" aria-current="page" href="/">
-		          	HOME
-		          </a>
-		        </li>
-		      	@foreach($categories as $category)
-		        <li class="nav-item">
-		          <a class="nav-link" aria-current="page" href="{{ url('categorie/' . $category->slug) }}">
-		          	{{ $category->name }}</a>
-		        </li>
-		      	@endforeach
-		      </ul>
-		    </div>
-		  </div>
-		</nav>
-	</div>
-</div>
-
 <div class="container mt-4 max-cont">
     <div class="row justify-content-center">
         <div class="col-md-12 white-content short-desc custom-content">
@@ -54,7 +27,7 @@
 		      			<a href="{{ url('articol/' . $post->category->slug . '/' . $post->slug) }}">
 		      				<span class="categ">{{ $post->category->name }}</span>
 							<h3 class="card-title bold">{{ $post->title }}</h3>
-							<p class="card-text">{!! $post->short_description !!}</p>
+							<div class="card-text">{!! $post->preview !!}</div>
 					      	<p class="card-text"><small class="text-muted">{{ $post->created_at->format('d.m.Y') }}</small></p>
 				      	</a>
 					</div>

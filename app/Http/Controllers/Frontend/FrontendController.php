@@ -71,12 +71,14 @@ class FrontendController extends Controller
         $search = $request->input('search');
 
         $posts = Post::query()
-            ->where('title', 'LIKE', "%{$search}%")
-            ->orWhere('body', 'LIKE', "%{$search}%")
-            ->paginate(15);
+            ->where('status', '=', 1)
+            ->where(function ($q) use ($search) {
+                $q->where('title', 'LIKE', "%{$search}%")->orWhere('body', 'LIKE', "%{$search}%");
+            })->paginate(15);
+
         $searchResMsg = 'Rezultate pentru: ' . $search;
         if ($posts->count() === 0) {
-            $searchResMsg = 'Nu s-au gasit rezultate pentru: ' . $search . '!';
+            $searchResMsg = 'Nu s-au gasit rezultate pentru: ' . $search;
         }
         return view('frontend.search')->with([
                 'posts' => $posts,

@@ -7,32 +7,6 @@
 @section('meta_keyword', "$post->meta_keyword")
 
 @section('content')
-	<div class="container-fluid">
-		<div class="row">
-			<nav class="navbar navbar-expand-lg header-bottom-wrapper">
-			  <div class="container-fluid">
-			    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-			      <span class="navbar-toggler-icon"></span>
-			    </button>
-			    <div class="collapse navbar-collapse main-menu justify-content-center" id="navbarNavDropdown">
-			      <ul class="navbar-nav">
-			      	<li class="nav-item">
-			         	 <a class="nav-link {{ Request::path() == '/' ? 'active' : '' }}" aria-current="page" href="/">
-				          	HOME
-				          </a>
-			        </li>
-			      	@foreach($categories as $category)
-			        <li class="nav-item">
-			          <a class="nav-link {{ (strpos(Route::currentRouteName(), 'fe.categorie') == 0 && (request()->segment(2) == $category->slug)) ? 'active' : '' }}" aria-current="page" href="{{ url('categorie/' . $category->slug) }}">
-			          	{{ $category->name }}</a>
-			        </li>
-			      	@endforeach
-			      </ul>
-			    </div>
-			  </div>
-			</nav>
-		</div>
-	</div>
 	<div class="container mt-4 max-cont">
 		<div class="row">
 			<div class="col-md-8">				
